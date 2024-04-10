@@ -10,6 +10,6 @@ public class SimpleController {
 
     @GetMapping("/customers")
     public List<Customer> customers() {
-        return List.of(new Customer("Bob"));
+        return List.of(new Customer("John"));
     }
 }

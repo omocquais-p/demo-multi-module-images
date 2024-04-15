@@ -23,4 +23,4 @@ call-service2:
 	curl -X GET --location "http://localhost:8082/customer"
 
 build-cnb:
-	docker run -v /var/run/docker.sock.raw:/var/run/docker.sock -v .:/workspace -w /workspace buildpacksio/pack build simple-project-service1 --env BP_MAVEN_BUILT_MODULE=service1 --env BP_JVM_VERSION=21 --path . --tag=simple-demo:latest --builder=paketobuildpacks/builder-jammy-full
+	docker run -v /var/run/docker.sock.raw:/var/run/docker.sock -v .:/workspace -w /workspace buildpacksio/pack build simple-project-service1 --path . --builder=paketobuildpacks/builder-jammy-full --env BP_MAVEN_BUILT_MODULE=service1 --env BP_MAVEN_BUILD_ARGUMENTS="-Dmaven.test.skip=true package -pl service1 -am" --env BP_JVM_VERSION=21  --tag=simple-demo:latest
